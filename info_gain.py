@@ -21,7 +21,8 @@ def Entropy(S):
 
     def log_2(p): 
         from math import log
-        return log(p, 2)
+        # log_2(0) is defined as 0 for the Entropy function
+        return 0 if p==0 else log(p, 2)
 
     c = Values["PlayTennis"]
 
@@ -29,7 +30,7 @@ def Entropy(S):
     def S_(i): return [example for example in S if example["PlayTennis"]==i]
 
     proportions = [len(S_(i))/len(S) for i in c] # proportions of S that belong to each class i in c
-    entropy = sum( -p * log_2(p) if p!=0 else 0 for p in proportions )
+    entropy = sum( -p * log_2(p) for p in proportions ) # sum the calculations performed on the proportions
     return entropy
 
 def IG(S, A):
