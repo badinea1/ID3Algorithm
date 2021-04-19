@@ -1,52 +1,43 @@
-'''
-attr1 == valueA1:
-    attr2 == valueB1:
-        attr3 == valueD3: Yes
-    attr2 == valueB2:
-attr1 == valueA2:
-    attr2 == valueC1:
-    attr2 == valueC2:
-attr1 == valueA3:
-'''
+class DecTree:
 
-class Node:
-    def __init__(self, attribute='?', values=[]):
-        if attribute=='?' and values: raise ValueError(f"'?' is the defualt attribute and thus cannot be given values {values}")
-        self.__attribute = attribute # attribute this node represents
-        self.__children = {value: Node('?') for value in values}
+    def __init__(self, attr='?', values=[]):
+        # attr: string stating the attribute this node represents
+        if not isinstance(attr, str): raise TypeError("attribute must be a string")
 
-    def set_node(self, attribute, values=[]):
-        if attribute=='?': raise ValueError("'?' is only a default value and cannot be set as the attribute of a node")
-        self.__attribute = attribute
-        self.__children = {value: Node('?') for value in values}
+        # values: list of strings representing the values branches can have
+        if (not isinstance(values, list) # values must be a list
+        or not all([isinstance(v,str) for v in values])): # all items in values must be strs
+            raise TypeError("values must be a list of strings")
 
-    def get_A(self): 
-        return self.__attribute
+        # make sure attr is given if values are given
+        if attr=='?' and values: raise ValueError("cannot assign values to attribute '?'")
+        
+        self.attr = attr
+        self.values = {val:DecTree() for val in values} # new empty tree at end of each value branch
 
-    def get_c(self): 
-        return [value for value in self.__children]
+    def add_node(self, value, child_attr='?', child_values=[]):
+        # function to assign new attribute node to end of value branch
+        if value not in self.values: raise ValueError(f"'{value}' is not a value of '{self.attr}'")
+        self.values[value] = DecTree(child_attr, child_values)
 
-    def get_child(self, value=None):
-        if value==None: return self.__children # return all children as dict if no arg given
-        else: return self.__children[value] # return child at value
+    def get_node(self, attr):
+        # traverse tree and return node with given attr
 
-    def set_child(self, value, node):
-        if node.get_A()=='?': raise ValueError("'?' is only a default value and cannot be set as the attribute of a node")
-        if value not in self.__children: raise ValueError(f"{self.__attribute} can have values {[value for value in self.__children]}, not '{value}'")
-        self.__children[value] = node
+        if self.attr==attr: return self
 
+        for value in self.values:
+            child = self.values[value]
+            if child.get_node(attr): return child.get_node(attr)
+
+        raise ValueError(f"'{attr}' not in tree")
+    
     def __str__(self, level=0):
+        lines = [] 
+        indent = '\t'
+        lines.append(indent*level + self.attr)
+        for value in self.values:
+            child = self.values[value]
+            lines.append(indent*(level+1) + value)
+            lines.append(child.__str__(level+2))
 
-        indent = lambda level: '\t'*level
-
-        s = ''
-
-        if self.__children:
-            # print all possible values
-            for value, child in self.__children.items():
-                s += '\n' + indent(level) + self.__attribute + ' == ' + value + ': '
-                s += child.__str__(level+1)
-        else: 
-            return self.__attribute + '\n'
-
-        return s
+        return '\n'.join(lines)
