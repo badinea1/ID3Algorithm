@@ -1,4 +1,11 @@
-from values import Values
+# possible values of each attribute
+Values = {
+    "Outlook": ["Sunny","Overcast","Rain"],
+    "Temperature": ["Hot","Mild","Cool"],
+    "Humidity": ["Normal","High"],
+    "Wind": ["Weak","Strong"],
+    "PlayTennis": ["Yes","No"]
+}
 
 def get_training_data(filename):
     # input name of CSV file containing training data
