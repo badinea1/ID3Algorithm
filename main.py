@@ -1,7 +1,14 @@
+import sys
+
+
 if __name__ == '__main__':
     
     from info_gain import *
     from DecisionTree import *
+
+    # total arguments
+    n = len(sys.argv)
+    print("Total arguments passed:", n)
 
     # First in-class Entropy example
     test = [{"PlayTennis":"Yes"} for i in range(9)] + [{"PlayTennis":"No"} for i in range(5)]
@@ -9,11 +16,12 @@ if __name__ == '__main__':
     print(f"\t{Entropy(test)}")
 
     # In-class Information Gain PlayTennis example
-    S = get_training_data("PlayTennisSampleDataFormat.txt")
+    #S = get_training_data("PlayTennisSampleDataFormat.txt")
+    S = get_training_data(sys.argv[1])
     print("In-class information gain calculations:")
     for A in Values:
         if A != "PlayTennis": print(f"\t{A}: {format(IG(S,A), '.3f')}")
-'''
+
     # ID3 algorithm
     def ID3():
         root = DecTree() # initialize tree
@@ -30,4 +38,7 @@ if __name__ == '__main__':
         A = max(gains, key=gains.get)
         # 
         root = DecTree(A, Values[A])
-        print(root)'''
+
+        output_file = open(sys.argv[2], 'w')
+        output_file.write = (print(root))
+        output_file.close()
