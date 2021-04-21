@@ -19,6 +19,7 @@ The repository includes four main deliverables:
        5. Details on how our team functioned
      
 **NOTE**: For the program to run successfully, you must have input and output file locations as command line arguments (shown below). 
+
 **NOTE**: Data in input file must have data in a comma separate value (csv) format. 
 
 ## Build Instructions for the HPC
