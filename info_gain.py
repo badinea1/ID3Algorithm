@@ -1,6 +1,7 @@
 def get_training_data(filename):
     # input name of CSV file containing training data
     # note: first line of file must be column names
+    # note: assumes last column of each row is the target attribute
     with open(filename,"r") as f:
         training_data = []
         from csv import DictReader

@@ -1,3 +1,7 @@
+# Authors: Amulya Badineni, Alioune Gueye, Michael Mongelli
+# Filename: main.py
+# Description: The program creates a tic tac toe learning system that improves with experience.
+
 import sys
 
 if __name__ == '__main__':
@@ -30,10 +34,14 @@ if __name__ == '__main__':
 
     #get all the attributes that are not the one i'm trying to predict (so not PlayTennis)
 
-    #ID3()
-
     # ID3 algorithm
     def ID3(examples, target_attr, attributes):
+        # inputs:
+        # examples: set of training examples, a list of tuples of the form ({example}, training_value)
+        # target_attr: attr whose value is predicted by the tree
+        # attributes: list of other attributes that may be tested by the learned Decision Tree
+
+        # output: the root node of a learned decision tree
 
         root = DecTree() # initialize tree
 
@@ -41,10 +49,6 @@ if __name__ == '__main__':
         count_neg = 0 # count for the negative examples in training data
 
         target_A = "yes" # holds the most common value of Target_Attr in examples
-
-        #examples[i] #gives me the ith dictionary
-
-        #examples[i][target_attr] #will give me the yes or no
 
         # iterate through examples
         for i in examples:
@@ -58,8 +62,6 @@ if __name__ == '__main__':
             return DecTree("Yes")
         elif count_neg == len(examples): # if all examples are negative
             return DecTree("No")
-
-           #If Attributes is empty, return single-node tree Root, with label = the most common value of Target_Attr in Examples;
             
         # check if attributes is empty
         if attributes == []:
@@ -98,9 +100,7 @@ if __name__ == '__main__':
                 #root.add_node(v, new_node.attr, new_node.values.keys())
                 #root.add_node(v, )
         
-        print("GROOOT")
-        print(root)
+        print(root) # print tree
         return root
 
-    #del values["PlayTennis"]
-    ID3(examples, "PlayTennis", ["Outlook", "Temperature", "Humidity", "Wind"])
+    ID3(examples, "PlayTennis", ["Outlook", "Temperature", "Humidity", "Wind"]) # call function
