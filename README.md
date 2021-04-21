@@ -22,6 +22,8 @@ The repository includes four main deliverables:
 
 **NOTE**: Data in input file must have data in a comma separate value (csv) format. 
 
+**LINK TO REPO**: https://github.com/badinea1/ID3Algorithm
+
 ## Build Instructions for the HPC
 1. Method 1: Cloning repository
 
