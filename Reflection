@@ -3,13 +3,13 @@
 # Description: A writeup reflecting on the assignment.
 
 (1) Anything positive you enjoyed or learned from this assignment
-	-
+	- Learning with a decision tree
 (2) Anything negative you didn't like about this assignment
 	- Nothing
 (3) Any parts of this assignment you found easy
-	- Implem
+	- Impleming Entropy and Information Gain
 (4) Any parts of this assignment you found challenging or couldn't get working correctly
-	
+	- Implementing data structure to hold decision tree and integrating ID3
 (5) How the team functioned:
 	- The team functioned by communicating through GroupMe and Zoom. The initial Zoom meeting was held to discuss the project and divide up the work. 
   The final Zoom meeting was held to review the code, debugg it, and work on other parts of the submission.
@@ -19,7 +19,7 @@
 	- Michael: Implemented entropy(), information gain(), get_training_data() and tree class.
 		   Added checking for number of command line arguments and graceful exit if input is incorrect.
 		   Added tree printing and output file handling.
-	- Ali:
+	- Ali: Worked on write up and helped debug code.
 
 	How the team communicated with each other:
 	- GroupMe was used for immediate communication and to decide when Zoom meetings would be held.
