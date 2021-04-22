@@ -1,19 +1,21 @@
 PlayTennis:
 
 Temperature
-        Hot
-                Outlook
-                        Sunny
-                                No
-                        Overcast
-                                Yes
         Cool
-                Wind
-                        Strong
+                Outlook
+                        Overcast
                                 No
+                        Rain
+                                No
+                        Sunny
+                                Yes
+        Hot
+                Wind
                         Weak
                                 Humidity
-                                        Normal
+                                        High
                                                 No
+                        Strong
+                                No
         Mild
                 Yes

@@ -57,6 +57,8 @@ if __name__ == '__main__':
         A = max(gains, key=gains.get) # get attribute that had the max info gain (the one that best classfies examples)
         root = DecTree(A, Values(examples)[A]) #set root of DecTree as A
 
+        attributes.remove(A) # remove A from attributes now that it is in the tree
+
         for v in Values(examples)[A]:
             # create a subset of examples that have value v for A
             examples_v = [(example, training_value) for (example, training_value) in examples if example[A]==v]
@@ -64,14 +66,7 @@ if __name__ == '__main__':
             if examples_v == []:
                 root.add_node(v, most_common_val) # add a leaf node with most common value of target_attr in examples
             else:
-                
-                child = ID3(examples_v, target_attr, attributes) # add the subtree ID3 below new branch
-                
-                attributes.remove(A) # remove A from attributes now that it is in the tree
-                # remove attribute from remaining examples
-                examples = [({attr: example[attr] for attr in attributes}, training_value) for (example, training_value) in examples]
-
-                root.add_node(v, child.attr, list(child.values))
+                root.values[v] = ID3(examples_v, target_attr, attributes) # add the subtree ID3 below new branch
                 
         return root
 
