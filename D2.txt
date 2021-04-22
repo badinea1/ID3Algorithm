@@ -1,0 +1,57 @@
+ID3 Trace:
+        ID3(examples, PlayTennis, ['Outlook', 'Temperature', 'Humidity', 'Wind']):
+                * Information gains:
+                        - Outlook: 0.2467498197744391
+                        - Temperature: 0.029222565658954647
+                        - Humidity: 0.15183550136234136
+                        - Wind: 0.04812703040826927
+                * max is 'Outlook'
+                * remove 'Outlook' from attributes
+                * added node of next ID3 call to 'Sunny' branch
+        ID3(examples, PlayTennis, ['Temperature', 'Humidity', 'Wind']):
+                * Information gains:
+                        - Temperature: 0.5709505944546686
+                        - Humidity: 0.9709505944546686
+                        - Wind: 0.01997309402197489
+                * max is 'Humidity'
+                * remove 'Humidity' from attributes
+                * added node of next ID3 call to 'Normal' branch
+        ID3(examples, PlayTennis, ['Temperature', 'Wind']):
+                * added node 'Yes'
+                * added node of next ID3 call to 'High' branch
+        ID3(examples, PlayTennis, ['Temperature', 'Wind']):
+                * added node 'No'
+                * added node of next ID3 call to 'Overcast' branch
+        ID3(examples, PlayTennis, ['Temperature', 'Wind']):
+                * added node 'Yes'
+                * added node of next ID3 call to 'Rain' branch
+        ID3(examples, PlayTennis, ['Temperature', 'Wind']):
+                * Information gains:
+                        - Temperature: 0.01997309402197489
+                        - Wind: 0.9709505944546686
+                * max is 'Wind'
+                * remove 'Wind' from attributes
+                * added node of next ID3 call to 'Strong' branch
+        ID3(examples, PlayTennis, ['Temperature']):
+                * added node 'No'
+                * added node of next ID3 call to 'Weak' branch
+        ID3(examples, PlayTennis, ['Temperature']):
+                * added node 'Yes'
+
+PlayTennis:
+
+Outlook
+        Rain
+                Wind
+                        Weak
+                                Yes
+                        Strong
+                                No
+        Sunny
+                Humidity
+                        High
+                                No
+                        Normal
+                                Yes
+        Overcast
+                Yes
