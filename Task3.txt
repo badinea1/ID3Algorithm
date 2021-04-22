@@ -1,0 +1,25 @@
+EnjoySport:
+
+Sky
+        Sunny
+                Yes
+        Rainy
+                No
+
+Task 3 Question:
+        What is the relationship between the learned decision tree and the version space 
+        that is learned from these same examples? Is the learned tree equivalent to one 
+        of the members of the version space?
+
+Answer:
+        The version space VS{H,D} is the set of all hypotheses consistent with the training data.
+        The learned tree is the resultant structure which is able to classify new examples
+        based on the features it has learned from said training data. 
+        By doing this, the tree has narrowed its version space to include only new examples
+        which are classified positively by the tree by reaching a leaf node with value "Yes".
+        The learned tree is related to the version space in that it represents the hypothesis
+        which is expressed with the inductive bias of the tree structure. 
+        The tree is not equivalent to a member of the version space. The version space includes
+        hypotheses consistent with the training data. The tree itself is not a hypotheses, 
+        rather it is a structure which is able to determine the classification of an example
+        with respect to the version space it represents.
