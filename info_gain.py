@@ -3,18 +3,20 @@ def get_training_data(filename):
     # note: first line of file must be column names
     # note: assumes last column of each row is the target attribute
     with open(filename,"r") as f:
-        training_data = []
+        examples = []
         from csv import DictReader
         for example in DictReader(f): # each line is saved into a dict
             # get enjoy_sport value from example
             example.pop("ExampleID") # remove unnecessary column
-            training_value = example.pop(list(example.keys())[-1]) # get training value of example
-            training_data.append((example, training_value)) # append pair to list of training examples
+            target_attr = list(example.keys())[-1]
+            training_value = example.pop(target_attr) # get training value of example
+            attributes = list(example.keys())
+            examples.append((example, training_value)) # append pair to list of training examples
 
     # output list of training examples
     # where each example looks like: ({attributes}, enjoy_sport)
     # attributes is a dict, enjoy_sport is a string "yes" or "no"
-    return training_data
+    return examples, target_attr, attributes
 
 def Entropy(S):
     # S is the set of training examples
@@ -45,7 +47,7 @@ def Values(S):
     for A in values:
         # a set only holds unique elements
         # thus values[A] now only holds unique possible values of attribute A
-        values[A] = set(values[A])
+        values[A] = list(set(values[A]))
 
     return values
 

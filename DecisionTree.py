@@ -46,11 +46,11 @@ class DecTree:
     
     def __str__(self, level=0):
         lines = [] 
-        indent = '\t'
-        lines.append(indent*level + self.attr)
+        indent = '        '
+        lines.append(indent*level + self.attr) # print attr of node
         for value in self.values:
             child = self.values[value]
-            lines.append(indent*(level+1) + value)
-            lines.append(child.__str__(level+2))
+            lines.append(indent*(level+1) + value) # print value branch
+            lines.append(child.__str__(level+2)) # print child at end of branch
 
         return '\n'.join(lines)

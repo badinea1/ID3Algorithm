@@ -1,0 +1,9 @@
+Sky
+        Sunny
+                Yes
+        Rainy
+                AirTemp
+                        Cold
+                                No
+                        Warm
+                                Yes
