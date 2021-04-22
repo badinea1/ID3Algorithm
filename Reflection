@@ -16,7 +16,9 @@
 
 	What each team member contributed:
 	- Amulya: Implemented the ID3 algorithm, debugged the code, and worked on the write-up.
-	- Michael: 
+	- Michael: Implemented entropy(), information gain(), get_training_data() and tree class.
+		   Added checking for number of command line arguments and graceful exit if input is incorrect.
+		   Added tree printing and output file handling.
 	- Ali:
 
 	How the team communicated with each other:
