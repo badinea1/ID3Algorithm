@@ -1,6 +1,6 @@
 # Authors: Amulya Badineni, Alioune Gueye, Michael Mongelli
 # Filename: main.py
-# Description: The program creates a tic tac toe learning system that improves with experience.
+# Description: The program implements the ID3 decision tree learning algorithm.
 
 import sys
 
