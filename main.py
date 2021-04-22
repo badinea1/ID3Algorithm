@@ -9,25 +9,28 @@ if __name__ == '__main__':
     from info_gain import *
     from DecisionTree import *
 
+    # ensure commmand line arguments are correct format, handle incorrect number of arguments
     if len(sys.argv) != 3:
         exit(
         "You must provide first the name of the input file and then the name of the output file. " +
         f"You only provided an input file '{sys.argv[1]}'"
         )
 
+    # get input and output files from command line
     inputfile = sys.argv[1]
     outputfile = sys.argv[2]
 
     # First in-class Entropy example
     testset = [({}, "Yes") for i in range(9)] + [({}, "No") for i in range(5)]
     print("First in-class entropy calculation:")
-    print(f"\t{Entropy(testset)}")
+    print(f"\t{Entropy(testset)}") # print out entropy calculation
 
     # In-class IG examples
     S,_,_ = get_training_data("PlayTennisSampleDataFormat.txt")
     print("\nTask 1:")
     print("In-class information gain calculations (using 'PlayTennisSampleDataFormat.txt'):")
     for A in Values(S):
+        # print out each information gain
         print(f"\t{A}: {format(IG(S,A), '.3f')}")
 
     # Task 1 - ID3 algorithm
@@ -47,8 +50,8 @@ if __name__ == '__main__':
         # if all examples are negative
         if all(training_value=="No" for (example, training_value) in examples): return DecTree("No")
             
-        target_attr_vals = [training_value for (example, training_value) in examples]
-        most_common_val = max(target_attr_vals, key=target_attr_vals.count)
+        target_attr_vals = [training_value for (example, training_value) in examples] # values of target_attr in examples
+        most_common_val = max(target_attr_vals, key=target_attr_vals.count) # most common value of target_attr
         if attributes == []: 
             # if attribute is empty, return node with most common value of target attr
             return DecTree(most_common_val)
@@ -71,11 +74,12 @@ if __name__ == '__main__':
         return root
 
     # Task 2 - learn tree from PlayTennis examples
-    examples, target_attr, attributes = get_training_data(inputfile)
-    DT = ID3(examples, target_attr, attributes)
+    examples, target_attr, attributes = get_training_data(inputfile) # get data from input file to run ID3 on
+    DT = ID3(examples, target_attr, attributes) # run the ID3 algorithm on the input
     print(target_attr+':\n')
     print(DT)
 
+    # print results to output file specified on command line
     with open(outputfile, 'w') as f:
         print(target_attr+':\n', file=f)
         print(DT, file=f)
